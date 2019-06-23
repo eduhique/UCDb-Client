@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
+    <script src="https://kit.fontawesome.com/0049b2d0c0.js"></script>
     <script src="./_js/index.js"></script>
 </head>
 
@@ -20,7 +20,7 @@
     <header class="header">
         
         <a href="" class="logo">
-            UCDb
+            UCDb 
         </a>
         <!--    <a href="./_media/_site/image2vector.svg" class="logo"></a>-->
         <input class="menu-btn" type="checkbox" id="menu-btn" />
@@ -50,10 +50,11 @@
             <div class="form-div">
                 <form id="search-form">
                     <h4>Encontre sua disciplina</h4>
-                    <span class="input-group">
+                    <div class="search-box">
                         <input onkeyup="submitSearch();" name="q" maxlength="200" placeholder="Digite o comecinho do nome..." autocomplete="off" id="search" value="">
                         <!--                <button aria-label="Pesquisar por qualquer coisa" type="submit" class="btn btn-link">Procurar</button>-->
-                    </span>
+                        <i  class="fas fa-search"></i>
+                    </div>
                 </form>
             </div>
 
