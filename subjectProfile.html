@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>UCDb</title>
+    <link rel="stylesheet" type="text/css" href="_css/subject.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/0049b2d0c0.js"></script>
+    <script src="./_js/index.js"></script>
+    <script src="./_js/subject.js"></script>
+
+    <script>
+        if (localStorage.getItem("token") == null || localStorage.getItem("token") == "") {
+            alert("Você não têm permissão para acessar essa página. Faça seu login e prossiga.")
+            window.location.href = "index.html";
+        }
+
+    </script>
+</head>
+
+<body>
+    <header class="header">
+
+        <a href="" class="logo">
+            UCDb
+        </a>
+        <!--    <a href="./_media/_site/image2vector.svg" class="logo"></a>-->
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+
+
+
+
+        <!-- NAV -->
+        <ul id="menu" class="menu">
+            <li></li>
+            <li><button class="btn-quaternary" onclick="window.location.href='subject.html'">Disciplinas</button></li>
+            <li id="btn-login" class=""><button class="btn-quaternary"
+                    onclick="document.getElementById('id01').style.display='block'" data-toggle="pill">Sign in</button>
+            </li>
+            <li id="btn-register" class=""><button class="btn-primary"
+                    onclick="document.getElementById('id02').style.display='block'" data-toggle="pill">Sign up</button>
+            </li>
+            <li id="btn-logout"><button class="btn-primary" onclick="logout();" data-toggle="pill">Sign out</button>
+            </li>
+
+        </ul>
+
+    </header>
+
+    <main>
+        <div class="subjectMain">
+            <div id="subjectbyid" class="subjectProfile"></div>
+        </div>
+    </main>
+
+    <footer class="center-footer">
+        <div class="sub-footer">
+            <div class="text-footer">
+                <a class="logo" href="/">
+                    UCDb
+                </a>
+                <span class="">
+                    Copyright © 2019 UDCb, Inc.
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function hideButtons() {
+            var login = document.getElementById("btn-login")
+            var register = document.getElementById("btn-register")
+            var logout = document.getElementById("btn-logout")
+            // Logado
+            if (localStorage.getItem("token") != null) {
+                login.style.display = "none"
+                register.style.display = "none"
+                logout.style.display = "block"
+            } else {
+                login.style.display = "block"
+                register.style.display = "block"
+                logout.style.display = "none"
+            }
+        }
+        hideButtons();
+
+    </script>
+
+</body>
+
+</html>

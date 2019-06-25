@@ -8,7 +8,8 @@
 
     <title>UCDb</title>
     <link rel="stylesheet" type="text/css" href="_css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/0049b2d0c0.js"></script>
@@ -18,9 +19,9 @@
 <body>
     <!-- Header -->
     <header class="header">
-        
+
         <a href="" class="logo">
-            UCDb 
+            UCDb
         </a>
         <!--    <a href="./_media/_site/image2vector.svg" class="logo"></a>-->
         <input class="menu-btn" type="checkbox" id="menu-btn" />
@@ -33,10 +34,15 @@
         <ul id="menu" class="menu">
             <li></li>
             <li><button class="btn-quaternary" onclick="window.location.href='subject.html'">Disciplinas</button></li>
-            <li id="btn-login" class=""><button class="btn-quaternary" onclick="document.getElementById('id01').style.display='block'" data-toggle="pill">Sign in</button></li>
-            <li id="btn-register" class=""><button class="btn-primary" onclick="document.getElementById('id02').style.display='block'" data-toggle="pill">Sign up</button></li>
-            <li id="btn-logout"><button class="btn-primary" onclick="logout();" data-toggle="pill">Sign out</button></li>
-            
+            <li id="btn-login" class=""><button class="btn-quaternary"
+                    onclick="document.getElementById('id01').style.display='block'" data-toggle="pill">Sign in</button>
+            </li>
+            <li id="btn-register" class=""><button class="btn-primary"
+                    onclick="document.getElementById('id02').style.display='block'" data-toggle="pill">Sign up</button>
+            </li>
+            <li id="btn-logout"><button class="btn-primary" onclick="logout();" data-toggle="pill">Sign out</button>
+            </li>
+
         </ul>
 
     </header>
@@ -51,19 +57,20 @@
                 <form id="search-form">
                     <h4>Encontre sua disciplina</h4>
                     <div class="search-box">
-                        <input onkeyup="submitSearch();" name="q" maxlength="200" placeholder="Digite o comecinho do nome..." autocomplete="off" id="search" value="">
+                        <input onkeyup="submitSearch();" name="q" maxlength="200"
+                            placeholder="Digite o comecinho do nome..." autocomplete="off" id="search" value="">
                         <!--                <button aria-label="Pesquisar por qualquer coisa" type="submit" class="btn btn-link">Procurar</button>-->
-                        <i  class="fas fa-search"></i>
+                        <i class="fas fa-search"></i>
                     </div>
                 </form>
             </div>
 
-           <div>
-            <!--        Listagem -->
-            <div id="disciplinas" class="">
+            <div>
+                <!--        Listagem -->
+                <div id="disciplinas" class="">
 
+                </div>
             </div>
-</div>
 
 
         </div>
@@ -104,15 +111,18 @@
         <div class="w3-modal-content w3-card-4" style="max-width:600px">
 
             <div class="w3-center"><br>
-                <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                <span onclick="document.getElementById('id01').style.display='none'"
+                    class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
             </div>
 
             <form class="w3-container" id="login" name="login" onsubmit="submitLogin(); return false;">
                 <h4>Faça seu Login</h4>
                 <hr>
                 <div class="w3-section">
-                    <input class="w3-input w3-border w3-margin-bottom" id="login-email" type="email" placeholder="E-mail" name="email" required>
-                    <input class="w3-input w3-border" type="password" id="login-psw" placeholder="Senha" name="psw" required>
+                    <input class="w3-input w3-border w3-margin-bottom" id="login-email" type="email"
+                        placeholder="E-mail" name="email" required>
+                    <input class="w3-input w3-border" type="password" id="login-psw" placeholder="Senha" name="psw"
+                        required>
                     <button class="w3-button-sub" type="submit">Login</button>
                 </div>
             </form>
@@ -125,15 +135,19 @@
         <div class="w3-modal-content w3-card-4" style="max-width:600px">
 
             <div class="w3-center"><br>
-                <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                <span onclick="document.getElementById('id02').style.display='none'"
+                    class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
             </div>
 
             <form class="w3-container" id="register" name="register" onsubmit="submitRegister(); return false;">
                 <h4>Cadastre-se</h4>
                 <div class="w3-section">
-                    <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Primeiro Nome" id="register-fName" required>
-                    <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Último Nome" id="register-lName" required>
-                    <input class="w3-input w3-border w3-margin-bottom" type="email" placeholder="E-mail" id="register-email" required>
+                    <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Primeiro Nome"
+                        id="register-fName" required>
+                    <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Último Nome"
+                        id="register-lName" required>
+                    <input class="w3-input w3-border w3-margin-bottom" type="email" placeholder="E-mail"
+                        id="register-email" required>
                     <input class="w3-input w3-border" type="password" placeholder="Senha" id="register-psw" required>
                     <button class="w3-button-sub" type="submit">Cadastrar-se</button>
                 </div>

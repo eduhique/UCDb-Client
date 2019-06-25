@@ -47,7 +47,7 @@ function submitRegister() {
         .then(function (data) {
             alert("Usuário cadastrado com sucesso")
             console.log(data)
-            window.location.href = "/"
+            window.location.href = "index.html"
         })
         .catch(function (error) {
             console.log('There has been a problem with your fetch operation: ' + error.message);
@@ -94,7 +94,7 @@ function submitLogin() {
             localStorage.setItem("token", data.token)
             localStorage.setItem("login", email)
 
-            window.location.href = "/"
+            window.location.href = "index.html"
         })
         .catch(function (error) {
             console.log('There has been a problem with your fetch operation: ' + error.message);
@@ -105,7 +105,7 @@ function submitLogin() {
 function logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('email');
-    window.location.href = "/";
+    window.location.href = "index.html";
 }
 
 function submitSearch() {
@@ -135,6 +135,7 @@ function formatarDisciplinas(listaDisciplinas) {
 
 
     listaDisciplinas.status != 404 ? repos.forEach(function (arrayItem) {
+
         list += ('<div class="card-container">' +
             '<hr>' +
             '<div class="card">' +
@@ -142,7 +143,7 @@ function formatarDisciplinas(listaDisciplinas) {
             arrayItem.id + ' - ' + arrayItem.nome +
             '</div>' +
             '<button class="w3-button-sub">' +
-            "<a href='/perfil.html?id=" +arrayItem.id + "'>Acessar perfil da disciplina</a>" +
+            "<a href='subjectProfile.html?id=" +arrayItem.id + "'>Acessar perfil da disciplina</a>" +
             '</button>' +
             '</div>' +
             '<hr>' +
