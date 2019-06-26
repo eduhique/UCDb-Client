@@ -462,6 +462,17 @@ hr{
     margin-bottom: 10px;
 }
 
+.card-comment-user{
+    background-color: rgba(235,211,164, 0.8);
+    width: 90%;
+    align-content: center;
+    justify-content: center;
+    display: block;
+    margin-left: 37px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
 .comment-text{
     font-size: 18px;
     padding-left: 10px;
@@ -531,4 +542,16 @@ hr{
     color: #2780BC;
     transition: 0.4s;
     text-shadow: #EDF3F4;
+}
+
+.comment-delete{
+    float: right;
+    padding-right: 10px;
+    padding-top: 7px;
+    font-size: 18px;
+}
+
+.comment-delete:hover{
+    color: rgba(255, 0, 0, 0.534);
+    transition: 0.4s;
 }
