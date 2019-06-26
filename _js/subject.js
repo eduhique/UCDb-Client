@@ -28,23 +28,27 @@ function subjectProfile(id) {
             var responseComments = data.comentarios;
             var listComments = '';
             var listAnswers = '';
+            document.getElementById("subjectbyid").innerHTML = '';
 
-            data.comentarios.status != 404 ? responseComments.forEach(function(arrayItem){
+            data.comentarios.status != 404 ? responseComments.forEach(function (arrayItem) {
                 var responseAwnsers = arrayItem.respostas;
-                arrayItem.respostas.status != 404 ? responseAwnsers.forEach(function(arrayAnwser){
-                    listAnswers += ('<div class="card-answer">'+
-                    '<div class="answer-name">'+ arrayAnwser.user.primeiroNome + ' ' + arrayAnwser.user.ultimoNome + ':' + '</div>' +
-                    '<div class="answer-text">' + arrayAnwser.text + ' - ' + '<span class="answer-time">' + arrayAnwser.hora + ', ' + arrayAnwser.data +'</span>' + '</div></div>');
-                }): null;
-                listComments += ('<div class="card-comment">' + 
-                '<div class="comment-name">'+ arrayItem.user.primeiroNome + ' ' + arrayItem.user.ultimoNome + ':' + '</div>' + 
-                '<div class="comment-text">'+ arrayItem.text + ' - ' + '<span class="comment-time">' + arrayItem.hora + ', ' + arrayItem.data +'</span>' + '</div>' + 
-                '<div class="comment-answer">' + listAnswers + '</div>' +
-                '</div>');
+                listAnswers = '';
+                arrayItem.respostas.status != 404 ? responseAwnsers.forEach(function (arrayAnwser) {
+                    listAnswers += ('<div class="card-answer">' +
+                        '<div class="answer-name">' + arrayAnwser.user.primeiroNome + ' ' + arrayAnwser.user.ultimoNome + ':' + '</div>' +
+                        '<div class="answer-text">' + arrayAnwser.text + ' - ' + '<span class="answer-time">' + arrayAnwser.hora + ', ' + arrayAnwser.data + '</span>' + '</div></div>');
+                }) : null;
+                listComments += ('<div class="card-comment">' +
+                    '<div class="comment-name">' + arrayItem.user.primeiroNome + ' ' + arrayItem.user.ultimoNome + ':' + '</div>' +
+                    '<div class="comment-text">' + arrayItem.text + ' - ' + '<span class="comment-time">' + arrayItem.hora + ', ' + arrayItem.data + '</span>' + '</div>' +
+                    '<div class="comment-answer">' + listAnswers + '</div>' +
+                    '</div>');
             }) : null;
 
             document.getElementById("subjectbyid").innerHTML = profile + "</br><div><span></span><span></span><span></span></div></br>" +
-            "<div class='comment-title'>Comentários</div><div>" + listComments + "</div><div></div><div></div><div></div></div>";
+                "<div class='comment-title'>Comentários</div>" +
+                "<div class='comment-area'><input type='text' class='comment-submit' placeholder='faça um comentário...' id='comment' ><a class='comment-button' href='#' onclick='return addComment()'><i class='fas fa-comment-dots'></i></a></div>" +
+                "<div>" + listComments + "</div><div></div><div></div><div></div></div>";
             /* disciplina tem:
                 * ID
                 * Nome
@@ -69,4 +73,48 @@ function subjectProfile(id) {
             console.log('There has been a problem with your fetch operation: ' + error.message);
             alert(error.message);
         });
+}
+
+
+
+function addComment() {
+    var inputComment = document.querySelector("#comment");
+    console.log(inputComment.value);
+    submitComment(inputComment);
+
+
+}
+
+function submitComment(inputComment){
+    var id = location.search.split("?");
+    var broke = id[1].split("=");
+
+    var data = {
+        text: inputComment.value
+    }
+
+    fetch('https://api-ucdb.herokuapp.com/api/v1/perfil/comentario/?perfil-id=' + broke[1], {
+        method: 'POST',
+        headers:{
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json; charset=utf-8',
+            'Authorization': `Bearer ${localStorage.token}`
+        },
+        body: JSON.stringify(data)
+    })
+    .then(function(response){
+        var msg = ""
+        if(!response.ok){
+            msg = "Algo deu errado"
+            throw new Error("Não foi possivel postar o comentário!")
+        }
+        return response.text()
+    })
+    .then(function(data) {
+        alert("Comentário feito com sucesso")
+        subjectProfile(broke[1]);
+    })
+    .catch(function(error){
+        alert(error.message);
+    })
 }
