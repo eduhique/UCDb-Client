@@ -29,7 +29,6 @@ function subjectProfile(id) {
             var listComments = '';
             var listAnswers = '';
             document.getElementById("subjectbyid").innerHTML = '';
-
             data.comentarios.status != 404 ? responseComments.forEach(function (arrayItem) {
                 var responseAwnsers = arrayItem.respostas;
                 listAnswers = '';
@@ -42,6 +41,7 @@ function subjectProfile(id) {
                     '<div class="comment-name">' + arrayItem.user.primeiroNome + ' ' + arrayItem.user.ultimoNome + ':' + '</div>' +
                     '<div class="comment-text">' + arrayItem.text + ' - ' + '<span class="comment-time">' + arrayItem.hora + ', ' + arrayItem.data + '</span>' + '</div>' +
                     '<div class="comment-answer">' + listAnswers + '</div>' +
+                    "<div class='answer-area'><input type='text' class='answer-submit' placeholder='digite uma resposta...' id='answer"+ arrayItem.id +"' ><a class='answer-button' href='#' onclick='return addAnswer(" + arrayItem.id + ")'><i class='fas fa-reply'></i></a></div>" +
                     '</div>');
             }) : null;
 
@@ -81,8 +81,6 @@ function addComment() {
     var inputComment = document.querySelector("#comment");
     console.log(inputComment.value);
     submitComment(inputComment);
-
-
 }
 
 function submitComment(inputComment){
@@ -112,6 +110,48 @@ function submitComment(inputComment){
     })
     .then(function(data) {
         alert("Comentário feito com sucesso")
+        subjectProfile(broke[1]);
+    })
+    .catch(function(error){
+        alert(error.message);
+    })
+}
+
+function addAnswer(id){
+    var inputAnswer = document.querySelector("#answer" + id);
+    submitAnswer(inputAnswer, id);
+}
+
+function submitAnswer(inputAnswer, id){
+    console.log(inputAnswer.value);
+    console.log(id);
+    var idSubject = location.search.split("?");
+    var broke = idSubject[1].split("=");
+    var idComment = id;
+
+    var data = {
+        text: inputAnswer.value
+    }
+
+    fetch('https://api-ucdb.herokuapp.com/api/v1/perfil/comentario/resposta/?comentario-id=' + idComment, {
+        method: 'POST',
+        headers:{
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json; charset=utf-8',
+            'Authorization': `Bearer ${localStorage.token}`
+        },
+        body: JSON.stringify(data)
+    })
+    .then(function(response){
+        var msg = ""
+        if(!response.ok){
+            msg = "Algo deu errado"
+            throw new Error("Não foi possivel postar a resposta!")
+        }
+        return response.text()
+    })
+    .then(function(data) {
+        alert("Resposta feita com sucesso")
         subjectProfile(broke[1]);
     })
     .catch(function(error){

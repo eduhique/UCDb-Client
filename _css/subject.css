@@ -402,6 +402,26 @@ hr{
     box-shadow: 2px 2px 2px #2780BC;
 }
 
+.answer-area{
+    background: none;
+    width: max-content;
+    
+    padding-left: 50px;
+    padding-bottom: 10px;
+    margin-top: -15px;
+
+}
+
+.answer-submit{
+    background: #EDF3F4;
+    border-radius: 7px;
+    font-size: 18px;
+    border: 1px solid #2780BC;
+    box-shadow: 2px 2px 2px #2780BC;
+    padding-left: 7px;
+    letter-spacing: 1px;
+}
+
 .answer-text{
     color: #2780BC;
     text-shadow: none;
@@ -417,6 +437,18 @@ hr{
 .answer-time{
     color:#000;
     font-size: 10px;
+}
+
+.answer-button{
+    font-size: 20px;
+    margin-left: 5px;
+    padding-bottom: 5px;
+}
+
+.answer-button:hover{
+    color: #2780BC;
+    transition: 0.4s;
+    text-shadow: #EDF3F4;
 }
 
 .card-comment{
@@ -483,7 +515,11 @@ hr{
     display: flex;
     justify-content: center;
     align-content: center;
-    
+}
+
+.comment-id{
+    color: transparent;
+    font-size: 0;
 }
 
 .comment-button{
@@ -495,5 +531,4 @@ hr{
     color: #2780BC;
     transition: 0.4s;
     text-shadow: #EDF3F4;
-
 }
