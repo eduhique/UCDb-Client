@@ -37,31 +37,39 @@ function subjectProfile(id) {
                         '<div class="answer-name">' + arrayAnwser.user.primeiroNome + ' ' + arrayAnwser.user.ultimoNome + ':' + '</div>' +
                         '<div class="answer-text">' + arrayAnwser.text + ' - ' + '<span class="answer-time">' + arrayAnwser.hora + ', ' + arrayAnwser.data + '</span>' + '</div></div>');
                 }) : null;
-                if(arrayItem.user.email == localStorage.getItem("login")){
-                    if(arrayItem.text != "" && arrayItem.text != null){
+                if (arrayItem.user.email == localStorage.getItem("login")) {
+                    if (arrayItem.text != "" && arrayItem.text != null) {
                         listComments += ('<div class="card-comment-user">' +
-                        '<div class="comment-name">' + arrayItem.user.primeiroNome + ' ' + arrayItem.user.ultimoNome + ':' + '<a class="comment-delete" href="#" onclick="return removeComment(' + arrayItem.id + ')"><i class="fas fa-trash-alt"></i></a>' + '</div>' +
-                        '<div class="comment-text">' + arrayItem.text + ' - ' + '<span class="comment-time">' + arrayItem.hora + ', ' + arrayItem.data + '</span>' + '</div>' +
-                        '<div class="comment-answer">' + listAnswers + '</div>' +
-                        "<div class='answer-area'><input type='text' class='answer-submit' placeholder='digite uma resposta...' id='answer"+ arrayItem.id +"' ><a class='answer-button' href='#' onclick='return addAnswer(" + arrayItem.id + ")'><i class='fas fa-reply'></i></a></div>" +
-                        '</div>')
+                            '<div class="comment-name">' + arrayItem.user.primeiroNome + ' ' + arrayItem.user.ultimoNome + ':' + '<a class="comment-delete" href="#" onclick="return removeComment(' + arrayItem.id + ')"><i class="fas fa-trash-alt"></i></a>' + '</div>' +
+                            '<div class="comment-text">' + arrayItem.text + ' - ' + '<span class="comment-time">' + arrayItem.hora + ', ' + arrayItem.data + '</span>' + '</div>' +
+                            '<div class="comment-answer">' + listAnswers + '</div>' +
+                            "<div class='answer-area'><input type='text' class='answer-submit' onkeypress='return answerEnter(event," + arrayItem.id + ") ' placeholder='digite uma resposta...' id='answer" + arrayItem.id + "' ><a class='answer-button' href='#' onclick='return addAnswer(" + arrayItem.id + ")'><i class='fas fa-reply'></i></a></div>" +
+                            '</div>')
                     }
-                } else{
-                    if(arrayItem.text != "" && arrayItem.text != null){
+                } else {
+                    if (arrayItem.text != "" && arrayItem.text != null) {
                         listComments += ('<div class="card-comment">' +
                             '<div class="comment-name">' + arrayItem.user.primeiroNome + ' ' + arrayItem.user.ultimoNome + ':' + '</div>' +
                             '<div class="comment-text">' + arrayItem.text + ' - ' + '<span class="comment-time">' + arrayItem.hora + ', ' + arrayItem.data + '</span>' + '</div>' +
                             '<div class="comment-answer">' + listAnswers + '</div>' +
-                            "<div class='answer-area'><input type='text' class='answer-submit' placeholder='digite uma resposta...' id='answer"+ arrayItem.id +"' ><a class='answer-button' href='#' onclick='return addAnswer(" + arrayItem.id + ")'><i class='fas fa-reply'></i></a></div>" +
+                            "<div class='answer-area'><input type='text' class='answer-submit' onkeypress='return answerEnter(event," + arrayItem.id + ") ' placeholder='digite uma resposta...' id='answer" + arrayItem.id + "' ><a class='answer-button' href='#' onclick='return addAnswer(" + arrayItem.id + ")'><i class='fas fa-reply'></i></a></div>" +
                             '</div>');
                     }
                 }
             }) : null;
 
-            document.getElementById("subjectbyid").innerHTML = profile + "</br><div><span></span><span></span><span></span></div></br>" +
+            var likeStatus = "";
+
+            if (data.curtidaUser) {
+                likeStatus = "button-liked";
+            } else {
+                likeStatus = "button-like";
+            }
+
+            document.getElementById("subjectbyid").innerHTML = "<div class='subject-name'>" + profile + "</div>" + "</br><div class='card-like'><a class=" + likeStatus + " href='#' onclick='return addLike()'><i class='fas fa-heart'></i></a><span class='number-likes'>" + data.curtidas + "</div></br>" +
                 "<div class='comment-title'>Comentários</div>" +
-                "<div class='comment-area'><input type='text' class='comment-submit' placeholder='faça um comentário...' id='comment' ><a class='comment-button' href='#' onclick='return addComment()'><i class='fas fa-comment-dots'></i></a></div>" +
-                "<div>" + listComments + "</div><div></div><div></div><div></div></div>";
+                "<div class='comment-area'><input type='text' class='comment-submit' onkeypress='return commentEnter(event)' placeholder='faça um comentário...' id='comment'><a class='comment-button' href='#' onclick='return addComment()'><i class='fas fa-comment-dots'></i></a></div>" +
+                "<div class='center'>" + listComments + "</div><div></div><div></div><div></div></div>";
             /* disciplina tem:
                 * ID
                 * Nome
@@ -96,7 +104,7 @@ function addComment() {
     submitComment(inputComment);
 }
 
-function submitComment(inputComment){
+function submitComment(inputComment) {
     var id = location.search.split("?");
     var broke = id[1].split("=");
 
@@ -106,36 +114,35 @@ function submitComment(inputComment){
 
     fetch('https://api-ucdb.herokuapp.com/api/v1/perfil/comentario/?perfil-id=' + broke[1], {
         method: 'POST',
-        headers:{
+        headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json; charset=utf-8',
             'Authorization': `Bearer ${localStorage.token}`
         },
         body: JSON.stringify(data)
     })
-    .then(function(response){
-        var msg = ""
-        if(!response.ok){
-            msg = "Algo deu errado"
-            throw new Error("Não foi possivel postar o comentário!")
-        }
-        return response.text()
-    })
-    .then(function(data) {
-        alert("Comentário feito com sucesso")
-        subjectProfile(broke[1]);
-    })
-    .catch(function(error){
-        alert(error.message);
-    })
+        .then(function (response) {
+            var msg = ""
+            if (!response.ok) {
+                msg = "Algo deu errado"
+                throw new Error("Não foi possivel postar o comentário!")
+            }
+            return response.text()
+        })
+        .then(function (data) {
+            subjectProfile(broke[1]);
+        })
+        .catch(function (error) {
+            alert(error.message);
+        })
 }
 
-function addAnswer(id){
+function addAnswer(id) {
     var inputAnswer = document.querySelector("#answer" + id);
     submitAnswer(inputAnswer, id);
 }
 
-function submitAnswer(inputAnswer, id){
+function submitAnswer(inputAnswer, id) {
     console.log(inputAnswer.value);
     console.log(id);
     var idSubject = location.search.split("?");
@@ -148,56 +155,97 @@ function submitAnswer(inputAnswer, id){
 
     fetch('https://api-ucdb.herokuapp.com/api/v1/perfil/comentario/resposta/?comentario-id=' + idComment, {
         method: 'POST',
-        headers:{
+        headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json; charset=utf-8',
             'Authorization': `Bearer ${localStorage.token}`
         },
         body: JSON.stringify(data)
     })
-    .then(function(response){
-        var msg = ""
-        if(!response.ok){
-            msg = "Algo deu errado"
-            throw new Error("Não foi possivel postar a resposta!")
-        }
-        return response.text()
-    })
-    .then(function(data) {
-        alert("Resposta feita com sucesso")
-        subjectProfile(broke[1]);
-    })
-    .catch(function(error){
-        alert(error.message);
-    })
+        .then(function (response) {
+            var msg = ""
+            if (!response.ok) {
+                msg = "Algo deu errado"
+                throw new Error("Não foi possivel postar a resposta!")
+            }
+            return response.text()
+        })
+        .then(function (data) {
+            subjectProfile(broke[1]);
+        })
+        .catch(function (error) {
+            alert(error.message);
+        })
 }
 
-function removeComment(id){
+function removeComment(id) {
     var idSubject = location.search.split("?");
     var broke = idSubject[1].split("=");
 
     fetch('https://api-ucdb.herokuapp.com/api/v1/perfil/comentario/delete/?Comentario-id=' + id, {
         method: 'DELETE',
-        headers:{
+        headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json; charset=utf-8',
             'Authorization': `Bearer ${localStorage.token}`
         },
     })
-    .then(function(response){
-        var msg = ""
-        if(!response.ok){
-            msg = "Algo deu errado"
-            throw new Error("Não foi possivel apagar o comentário!")
-        }
-        return response.text()
-    })
-    .then(function(data) {
-        alert("Comentário apagado com sucesso")
-        subjectProfile(broke[1]);
-    })
-    .catch(function(error){
-        alert(error.message);
-    })
+        .then(function (response) {
+            var msg = ""
+            if (!response.ok) {
+                msg = "Algo deu errado"
+                throw new Error("Não foi possivel apagar o comentário!")
+            }
+            return response.text()
+        })
+        .then(function (data) {
+            subjectProfile(broke[1]);
+        })
+        .catch(function (error) {
+            alert(error.message);
+        })
 
 }
+
+function addLike() {
+    var idSubject = location.search.split("?");
+    var broke = idSubject[1].split("=");
+
+    fetch('https://api-ucdb.herokuapp.com/api/v1/perfil/like/?perfil-id=' + broke[1], {
+        method: 'PUT',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json; charset=utf-8',
+            'Authorization': `Bearer ${localStorage.token}`
+        },
+    })
+        .then(function (response) {
+            var msg = ""
+            if (!response.ok) {
+                msg = "Algo deu errado"
+                throw new Error("Não foi possivel realizar a operação!")
+            }
+            return response.text()
+        })
+        .then(function (data) {
+            subjectProfile(broke[1]);
+        })
+        .catch(function (error) {
+            alert(error.message);
+        })
+}
+
+function answerEnter(e, idAnswer){
+    if (e.keyCode == 13) {
+        addAnswer(idAnswer);
+        return false;
+    }
+};
+
+function commentEnter(e){
+    if (e.keyCode == 13) {
+        addComment();
+        return false;
+    }
+};
+

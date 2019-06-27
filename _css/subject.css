@@ -390,7 +390,11 @@ hr{
     color: #EDF3F4;
     text-shadow: 2px 2px 2px #2780BC;
     margin: 15px;
+}
+
+.subject-name{
     text-align: center;
+    width: 100%;
 }
 
 .card-answer{
@@ -454,22 +458,22 @@ hr{
 
 .card-comment{
     background-color: rgba(237,243,244, 0.5);
-    width: 90%;
+    width: 661.5px;
     align-content: center;
     justify-content: center;
     display: block;
-    margin-left: 37px;
+    margin-left: 0px;
     border-radius: 10px;
     margin-bottom: 10px;
 }
 
 .card-comment-user{
-    background-color: rgba(235,211,164, 0.8);
-    width: 90%;
+    background-color: rgba(122, 190, 236, 0.897);
+    width: 661.5px;
     align-content: center;
     justify-content: center;
     display: block;
-    margin-left: 37px;
+    margin-left: 0px;
     border-radius: 10px;
     margin-bottom: 10px;
 }
@@ -555,4 +559,45 @@ hr{
 .comment-delete:hover{
     color: rgba(255, 0, 0, 0.534);
     transition: 0.4s;
+}
+
+.center{
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+
+.card-like{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.button-like{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    color: rgba(255, 0, 0, 0.349);
+    text-decoration: none;
+    font-size: 50px;
+}
+
+.button-like:hover{
+    color: rgba(255, 0, 0, 0.774);
+    transition: 0.4s
+}
+
+.button-liked{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    color: rgba(255, 0, 0, 0.774);
+    text-decoration: none;
+    font-size: 50px;
+}
+
+.number-likes{
+    margin-left: 12px;
+    padding-top: 1px;
+    font-size: 35px;
 }
