@@ -18,6 +18,9 @@ function subjectProfile(id) {
         },
     })
         .then(function (response) {
+            if(response.status == 500){
+                throw new Error("Faça o login para poder continuar");
+            }
             if (!response.ok) {
                 throw new Error("Não foi possível encontrar uma disciplina com tal parâmetro")
             }
@@ -67,32 +70,15 @@ function subjectProfile(id) {
             }
 
             document.getElementById("subjectbyid").innerHTML = "<div class='subject-name'>" + profile + "</div>" + "</br><div class='card-like'><a class=" + likeStatus + " href='#' onclick='return addLike()'><i class='fas fa-heart'></i></a><span class='number-likes'>" + data.curtidas + "</div></br>" +
-                "<div class='comment-title'>Comentários</div>" +
                 "<div class='comment-area'><input type='text' class='comment-submit' onkeypress='return commentEnter(event)' placeholder='faça um comentário...' id='comment'><a class='comment-button' href='#' onclick='return addComment()'><i class='fas fa-comment-dots'></i></a></div>" +
                 "<div class='center'>" + listComments + "</div><div></div><div></div><div></div></div>";
-            /* disciplina tem:
-                * ID
-                * Nome
-                * Número de likes (identificar quem deu like)
-                * Notas atriubídas pelos alunos a disciplina
-                * Comentários dos alunos sobre a disciplina
-                 
-                
-                Ao Puxar os dados:
-                    * Nota da disciplina (média)
-                    * Número de likes e dislikes
-                    * Exibir todos os comentários em ordem da mais recente pra mais antiga.
-                    * Campo de comentários acima de todos os comentários.
-                    */
-
-
-
 
             console.log(data)
         })
         .catch(function (error) {
             console.log('There has been a problem with your fetch operation: ' + error.message);
             alert(error.message);
+            logout();
         });
 }
 
@@ -235,17 +221,23 @@ function addLike() {
         })
 }
 
-function answerEnter(e, idAnswer){
+function answerEnter(e, idAnswer) {
     if (e.keyCode == 13) {
         addAnswer(idAnswer);
         return false;
     }
 };
 
-function commentEnter(e){
+function commentEnter(e) {
     if (e.keyCode == 13) {
         addComment();
         return false;
     }
 };
+
+function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    window.location.href = "index.html";
+}
 
