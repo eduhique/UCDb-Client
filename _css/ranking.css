@@ -142,3 +142,88 @@
     color: #2C3035;
     transition: 0.5s;
 }
+
+
+@media (max-width: 768px) {
+    body{
+        display: grid;
+    }
+
+    .rankingProfile{
+        display: grid;
+        min-width: 300px;
+        width: auto;
+    }
+
+    .rankingMain{
+        display: grid;
+        min-width: 300px;
+        width: auto;
+    }
+
+    .card-ranking{
+        min-width: 300px;
+        width: auto;
+        display: block;
+    }
+
+    .ranking-buttons{
+        min-width: 300px;
+        width: auto;
+    }
+
+    .ranking-text{
+        width: auto;
+    }
+
+    main{
+        min-width: 300px;
+    }
+
+    .content{
+        text-align: left;
+    }
+}
+
+@media (max-width: 450px) {
+    body{
+        display: grid;
+    }
+
+    .rankingProfile{
+        display: grid;
+        min-width: 300px;
+        width: auto;
+    }
+
+    .rankingMain{
+        display: grid;
+        min-width: 300px;
+        width: auto;
+    }
+
+    .card-ranking{
+        min-width: 300px;
+        width: auto;
+        display: block;
+    }
+
+    .ranking-buttons{
+        min-width: 300px;
+        width: auto;
+    }
+
+    .ranking-text{
+        width: auto;
+    }
+
+    .content{
+        text-align: left;
+    }
+
+    main{
+        min-width: 300px;
+    }
+
+    
+}

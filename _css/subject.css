@@ -633,3 +633,88 @@ hr{
     padding-top: 1px;
     font-size: 35px;
 }
+
+@media (max-width: 768px) {
+    body{
+        display: grid;
+    }
+
+    .subjectMain{
+        display: flow-root;
+    }
+
+    .comment-area{
+        display: flex;
+    }
+
+    .comment-submit{
+        width: auto;
+        min-width: 200px;
+    }
+
+    .card-comment{
+        width: auto;
+        min-width: 300px;
+    }
+
+    .card-comment-user{
+        width: auto;
+        min-width: 300px;
+    }
+
+    .center{
+        display: contents;
+    }
+
+    main{
+        min-width: 300px;
+    }
+}
+
+@media (max-width: 450px) {
+    body{
+        display: grid;
+    }
+
+    .subjectMain{
+        display: flow-root;
+    }
+
+    .comment-area{
+        display: flex;
+    }
+
+    .comment-submit{
+        width: auto;
+        min-width: 200px;
+    }
+
+    .card-comment{
+        width: auto;
+        min-width: 300px;
+    }
+
+    .card-comment-user{
+        width: auto;
+        min-width: 300px;
+    }
+
+    .center{
+        display: contents;
+    }
+
+    main{
+        min-width: 300px;
+    }
+
+    .answer-submit{
+        max-width: 230px;
+    }
+
+    .card-answer{
+        max-width: 250px;
+    }
+}
+
+
+

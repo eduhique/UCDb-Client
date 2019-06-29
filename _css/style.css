@@ -563,3 +563,25 @@ hr{
     background-color: #757C84;
 }
 
+@media (max-width: 450px) {
+    body{
+        display: grid;
+    }
+
+    main{
+        min-width: 300px;
+        width: auto;
+    }
+
+    .search-box{
+        width: auto;
+    }
+
+    #search{
+        min-width: 270px;
+    }
+
+    .content{
+        text-align: left;
+    }
+}
