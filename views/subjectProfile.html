@@ -6,14 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>UCDb - Disciplina</title>
-    <link rel="stylesheet" type="text/css" href="_css/subject.css">
+
+    <link rel="stylesheet" type="text/css" href="../styles/subject.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/0049b2d0c0.js"></script>
-    <script src="./_js/index.js"></script>
-    <script src="./_js/subject.js"></script>
+
+    <script src="../services/authService.js"></script>
+    <script src="../services/userService.js"></script>
+    <script src="../services/searchService.js"></script>
+    <script src="../services/subjectService.js"></script>
+    <script src="../services/commentService.js"></script>
+    <script src="../services/likeService.js"></script>
 
     <script>
         if (localStorage.getItem("token") == null || localStorage.getItem("token") == "") {
@@ -33,14 +40,9 @@
             <span class="tower3"></span>
             <span class="letter">ucdb</span>
         </a>
-        <!--    <a href="./_media/_site/image2vector.svg" class="logo"></a>-->
         <input class="menu-btn" type="checkbox" id="menu-btn" />
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
 
-
-
-
-        <!-- NAV -->
         <ul id="menu" class="menu">
             <li></li>
             <li><button class="btn-quaternary" onclick="window.location.href='ranking.html'">Ranking</button></li>
