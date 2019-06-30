@@ -61,6 +61,21 @@
     text-shadow: none;
 }
 
+.button-unlike{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    color: #757C84;
+    text-decoration: none;
+    font-size: 40px;
+    text-shadow: none;
+}
+
+.button-unlike:hover{
+    color: #2C3035;
+    transition: 0.4s;
+}
+
 .button-ext{
     display: flex;
     align-content: center;
@@ -84,6 +99,7 @@
     color: #2C3035;
     font-weight: bold;
     text-shadow: none;
+    min-width: 20px;
 }
 
 .ranking-buttons{

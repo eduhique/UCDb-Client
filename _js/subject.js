@@ -9,7 +9,7 @@ window.onload = function subjectDecode() {
 function subjectProfile(id) {
     console.log(id);
     console.log(localStorage.getItem("token"));
-    fetch(('https://api-ucdb.herokuapp.com/api/v1/perfil/?disciplina-id=' + id), {
+    fetch(('https://api-ucdb.herokuapp.com/api/v1/perfil/?perfil-id=' + id), {
         method: 'GET',
         headers: {
             'Access-Control-Allow-Origin': '*',
@@ -168,7 +168,7 @@ function removeComment(id) {
     var idSubject = location.search.split("?");
     var broke = idSubject[1].split("=");
 
-    fetch('https://api-ucdb.herokuapp.com/api/v1/perfil/comentario/delete/?Comentario-id=' + id, {
+    fetch('https://api-ucdb.herokuapp.com/api/v1/perfil/comentario/?comentario-id=' + id, {
         method: 'DELETE',
         headers: {
             'Access-Control-Allow-Origin': '*',
