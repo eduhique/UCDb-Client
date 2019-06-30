@@ -47,10 +47,27 @@ function renderRankingLike(data){
             buttonLike = 'button-unlike';
         }
         
-        listLike+= ('<div class="card-ranking">' +
-                            '<div class="ranking-text">' + contador + ".&nbsp;&nbsp;&nbsp;" + arrayLike.disciplina +'</div>' +
-                            "<div class='card-like'><a class='button-ext' href='subjectProfile.html?id=" +arrayLike.id + "'><i class='fas fa-pager'></i></a><a class=" + buttonLike + " href='#' onclick='return addLike("+ arrayLike.id+")'><i class='fas fa-heart'></i></a><span class='number-likes'>" + arrayLike.curtidas + "</div>" +
-                            '</div>');
+        if(contador == 1){
+            listLike+= ('<div class="card-ranking-gold">' +
+                                '<div class="ranking-text">' + contador + ".&nbsp;&nbsp;&nbsp;" + arrayLike.disciplina +'</div>' +
+                                "<div class='card-like'><a class='button-ext' href='subjectProfile.html?id=" +arrayLike.id + "'><i class='fas fa-pager'></i></a><a class=" + buttonLike + " href='#' onclick='return addLike("+ arrayLike.id+")'><i class='fas fa-heart'></i></a><span class='number-likes'>" + arrayLike.curtidas + "</div>" +
+                                '</div>');
+        } else if(contador == 2){
+            listLike+= ('<div class="card-ranking-silver">' +
+                                '<div class="ranking-text">' + contador + ".&nbsp;&nbsp;&nbsp;" + arrayLike.disciplina +'</div>' +
+                                "<div class='card-like'><a class='button-ext' href='subjectProfile.html?id=" +arrayLike.id + "'><i class='fas fa-pager'></i></a><a class=" + buttonLike + " href='#' onclick='return addLike("+ arrayLike.id+")'><i class='fas fa-heart'></i></a><span class='number-likes'>" + arrayLike.curtidas + "</div>" +
+                                '</div>');
+        } else if(contador == 3){
+            listLike+= ('<div class="card-ranking-bronze">' +
+                                '<div class="ranking-text">' + contador + ".&nbsp;&nbsp;&nbsp;" + arrayLike.disciplina +'</div>' +
+                                "<div class='card-like'><a class='button-ext' href='subjectProfile.html?id=" +arrayLike.id + "'><i class='fas fa-pager'></i></a><a class=" + buttonLike + " href='#' onclick='return addLike("+ arrayLike.id+")'><i class='fas fa-heart'></i></a><span class='number-likes'>" + arrayLike.curtidas + "</div>" +
+                                '</div>');
+        } else{
+            listLike+= ('<div class="card-ranking">' +
+                                '<div class="ranking-text">' + contador + ".&nbsp;&nbsp;&nbsp;" + arrayLike.disciplina +'</div>' +
+                                "<div class='card-like'><a class='button-ext' href='subjectProfile.html?id=" +arrayLike.id + "'><i class='fas fa-pager'></i></a><a class=" + buttonLike + " href='#' onclick='return addLike("+ arrayLike.id+")'><i class='fas fa-heart'></i></a><span class='number-likes'>" + arrayLike.curtidas + "</div>" +
+                                '</div>');
+        }
         contador += 1;
 
     }): null;
@@ -96,11 +113,27 @@ function renderRankingComment(data){
 
     data.status != 404 ? responseLike.forEach(function (arrayLike){
 
-        
-        listLike+= ('<div class="card-ranking">' +
+        if(contador == 1){
+            listLike+= ('<div class="card-ranking-gold">' +
+                                '<div class="ranking-text">' + contador + ".&nbsp;&nbsp;&nbsp;" + arrayLike.disciplina +'</div>' +   
+                                "<div class='card-like'><a class='button-ext' href='subjectProfile.html?id=" +arrayLike.id + "'><i class='fas fa-pager'></i></a><a class='button-liked'><i class='fas fa-comment'></i></a><span class='number-likes'>" + arrayLike.qtdComentario + "</span></div>" +
+                                '</div>');
+        } else if(contador == 2){
+            listLike+= ('<div class="card-ranking-silver">' +
                             '<div class="ranking-text">' + contador + ".&nbsp;&nbsp;&nbsp;" + arrayLike.disciplina +'</div>' +   
                             "<div class='card-like'><a class='button-ext' href='subjectProfile.html?id=" +arrayLike.id + "'><i class='fas fa-pager'></i></a><a class='button-liked'><i class='fas fa-comment'></i></a><span class='number-likes'>" + arrayLike.qtdComentario + "</span></div>" +
                             '</div>');
+        } else if(contador == 3){
+            listLike+= ('<div class="card-ranking-bronze">' +
+                            '<div class="ranking-text">' + contador + ".&nbsp;&nbsp;&nbsp;" + arrayLike.disciplina +'</div>' +   
+                            "<div class='card-like'><a class='button-ext' href='subjectProfile.html?id=" +arrayLike.id + "'><i class='fas fa-pager'></i></a><a class='button-liked'><i class='fas fa-comment'></i></a><span class='number-likes'>" + arrayLike.qtdComentario + "</span></div>" +
+                            '</div>');
+        } else {
+            listLike+= ('<div class="card-ranking">' +
+                            '<div class="ranking-text">' + contador + ".&nbsp;&nbsp;&nbsp;" + arrayLike.disciplina +'</div>' +   
+                            "<div class='card-like'><a class='button-ext' href='subjectProfile.html?id=" +arrayLike.id + "'><i class='fas fa-pager'></i></a><a class='button-liked'><i class='fas fa-comment'></i></a><span class='number-likes'>" + arrayLike.qtdComentario + "</span></div>" +
+                            '</div>');
+        }
         contador += 1;
 
     }): null;

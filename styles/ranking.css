@@ -28,12 +28,43 @@
     justify-content: space-between;
 }
 
+.card-ranking-gold{
+    background: #FFD700;
+    margin: 10px 0px;
+    border-radius: 10px;
+    padding: 5px;
+    min-height: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-ranking-silver{
+    background: #C0C0C0;
+    margin: 10px 0px;
+    border-radius: 10px;
+    padding: 5px;
+    min-height: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-ranking-bronze{
+    background: #cd7f32;
+    margin: 10px 0px;
+    border-radius: 10px;
+    padding: 5px;
+    min-height: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .ranking-text{
     margin: 15px;
     letter-spacing: 2px;
     font-size: 18px;
     color: #2C3035;
     text-shadow: none;
+    text-align: left;
 }
 
 .ranking-name{
@@ -208,7 +239,7 @@
     }
 
     .rankingProfile{
-        display: grid;
+        display: block;
         min-width: 300px;
         width: auto;
     }
@@ -220,6 +251,24 @@
     }
 
     .card-ranking{
+        min-width: 300px;
+        width: auto;
+        display: block;
+    }
+
+    .card-ranking-gold{
+        min-width: 300px;
+        width: auto;
+        display: block;
+    }
+
+    .card-ranking-silver{
+        min-width: 300px;
+        width: auto;
+        display: block;
+    }
+
+    .card-ranking-bronze{
         min-width: 300px;
         width: auto;
         display: block;
