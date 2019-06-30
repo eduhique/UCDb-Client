@@ -36,9 +36,19 @@ function subjectProfile(id) {
                 var responseAwnsers = arrayItem.respostas;
                 listAnswers = '';
                 arrayItem.respostas.status != 404 ? responseAwnsers.forEach(function (arrayAnwser) {
-                    listAnswers += ('<div class="card-answer">' +
-                        '<div class="answer-name">' + arrayAnwser.user.primeiroNome + ' ' + arrayAnwser.user.ultimoNome + ':' + '</div>' +
-                        '<div class="answer-text">' + arrayAnwser.text + ' - ' + '<span class="answer-time">' + arrayAnwser.hora + ', ' + arrayAnwser.data + '</span>' + '</div></div>');
+                    if (arrayAnwser.user.email == localStorage.getItem("login")) {
+                        if (arrayAnwser.text != "" && arrayAnwser.text != null) {
+                            listAnswers += ('<div class="answer-flex"><div class="card-answer-user">' +
+                                '<div class="answer-name">' + arrayAnwser.user.primeiroNome + ' ' + arrayAnwser.user.ultimoNome + ':' + '</div>' +
+                                '<div class="answer-text">' + arrayAnwser.text + ' - ' + '<span class="answer-time">' + arrayAnwser.hora + ', ' + arrayAnwser.data + '</span>' + '</div></div>' +
+                                '<a class="answer-delete" href="#" onclick="return removeComment(' + arrayAnwser.id + ')"><i class="fas fa-trash-alt"></i></a></div>');
+                        }
+                    } else {
+                        listAnswers += ('<div class="answer-flex"><div class="card-answer">' +
+                                '<div class="answer-name">' + arrayAnwser.user.primeiroNome + ' ' + arrayAnwser.user.ultimoNome + ':' + '</div>' +
+                                '<div class="answer-text">' + arrayAnwser.text + ' - ' + '<span class="answer-time">' + arrayAnwser.hora + ', ' + arrayAnwser.data + '</span>' + '</div></div>' +
+                                '</div>');
+                    }
                 }) : null;
                 if (arrayItem.user.email == localStorage.getItem("login")) {
                     if (arrayItem.text != "" && arrayItem.text != null) {

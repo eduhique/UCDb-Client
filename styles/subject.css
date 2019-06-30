@@ -437,6 +437,18 @@ hr{
     box-shadow: 2px 2px 2px #2C3035;
 }
 
+.card-answer-user{
+    background: #96938B;
+    margin: 10px 0px;
+    width: max-content;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #2C3035;
+    box-shadow: 2px 2px 2px #2C3035;
+}
+
+
+
 .answer-area{
     background: none;
     width: max-content;
@@ -527,6 +539,7 @@ hr{
 .comment-answer{
     padding-left: 50px;
     padding-bottom: 10px;
+    display: grid;
 }
 
 .comment-time{
@@ -590,6 +603,23 @@ hr{
 .comment-delete:hover{
     color: rgba(255, 0, 0, 0.534);
     transition: 0.4s;
+}
+
+.answer-delete{
+    padding-right: 10px;
+    padding-top: 7px;
+    font-size: 18px;
+    margin-left: 10px;
+    margin-top: 14px;
+}
+
+.answer-delete:hover{
+    color: rgba(255, 0, 0, 0.534);
+    transition: 0.4s;
+}
+
+.answer-flex{
+    display: flex;
 }
 
 .center{
