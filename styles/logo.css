@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Nunito+Sans&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comfortaa', cursive;
+}
+html {
+    font-family: 'Comfortaa', cursive;
+}
+.tower1{
+    margin-top: 200px;
+    margin-left: 50px;
+    height: 100px;
+    width: 50px;
+    background: url('assets/t3.png'),
+                #2C3035;
+    border-radius: 15px;
+}
+.tower2{
+    margin-top: 125px;
+    margin-left: 50px;
+    height: 175px;
+    width: 50px;
+    background: url('assets/t3.png'),
+                #2C3035;
+    border-radius: 15px;
+}
+.tower3{
+    margin-top: 50px;
+    margin-left: 50px;
+    height: 250px;
+    width: 50px;
+    background: url('assets/t3.png'),
+                #2C3035;
+    border-radius: 15px;
+}
+
+.letter{
+    letter-spacing: 2px;
+    margin-left: 50px;
+    color: #2C3035;
+    text-decoration: none;
+    font-size: 250px;
+    margin-top: 70px;
+}
+
+.logo{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    vertical-align: center;
+    margin-top: 125px;
+}
+
+body{
+    background: url('assets/t3.png'),
+                #EEF2F1;
+}
