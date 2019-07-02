@@ -12,7 +12,7 @@ function submitComment(inputComment) {
         text: inputComment.value
     }
 
-    fetch('https://api-ucdb.herokuapp.com/api/v1/perfil/comentario/?perfil-id=' + broke[1], {
+    fetch('https://api-ucdb.herokuapp.com/api/v1/perfil/comentario?comentario-id='+ 0 +'&perfil-id=' + broke[1], {
         method: 'POST',
         headers: {
             'Access-Control-Allow-Origin': '*',
@@ -53,7 +53,7 @@ function submitAnswer(inputAnswer, id) {
         text: inputAnswer.value
     }
 
-    fetch('https://api-ucdb.herokuapp.com/api/v1/perfil/comentario/resposta/?comentario-id=' + idComment, {
+    fetch('https://api-ucdb.herokuapp.com/api/v1/perfil/comentario?comentario-id='+idComment+ '&perfil-id=' + broke[1], {
         method: 'POST',
         headers: {
             'Access-Control-Allow-Origin': '*',
@@ -99,6 +99,7 @@ function removeComment(id) {
             return response.text()
         })
         .then(function (data) {
+            alert('Comentário apagado com sucesso!')
             subjectProfile(broke[1]);
         })
         .catch(function (error) {
