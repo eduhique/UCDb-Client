@@ -12,22 +12,22 @@ O código do BackEnd da aplicação pode ser visto através do link: https://git
 ## Funcionalidades:
 
   ### Cadastrar/autenticar usuários:
-      É possível o usuário se cadastar e se logar dentro do sistema para ter acesso às demais funcionalidades.
+  É possível o usuário se cadastar e se logar dentro do sistema para ter acesso às demais funcionalidades.
       
   ### Pesquisar disciplinas a partir de uma (sub)string:
-      O usuário pode pesquisar por uma disciplina por um pedacinho do seu nome, ou então, pelo nome completo.
+  O usuário pode pesquisar por uma disciplina por um pedacinho do seu nome, ou então, pelo nome completo.
 
   ### Recuperar o perfil de uma disciplina a partir do seu código numérico:
-      O usuário também pode pesquisar por uma disciplina através do código único da disciplina.
+  O usuário também pode pesquisar por uma disciplina através do código único da disciplina.
 
   ### Adicionar comentários de uma disciplina: 
-      É possível que o usuário logado adicione comentários à página da dísciplina. Também é possível responder a estes comentários.
+  É possível que o usuário logado adicione comentários à página da dísciplina. Também é possível responder a estes comentários.
       
   ### Apagar comentários de uma disciplina:
-      O usuário também pode apagar comentários e respostas feitos por ele.
+  O usuário também pode apagar comentários e respostas feitos por ele.
 
   ### Dar/retirar like em uma disciplina:
-      O usuário pode dar like a uma disciplina, assim como pode retirar este like da mesma.
+  O usuário pode dar like a uma disciplina, assim como pode retirar este like da mesma.
 
   ### Ranking das disciplinas:
-      É possível ver o ranking de disciplinas a partir do número de likes ou também pelo número de comentários.
+  É possível ver o ranking de disciplinas a partir do número de likes ou também pelo número de comentários.
