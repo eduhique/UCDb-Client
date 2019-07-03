@@ -92,7 +92,7 @@ function subjectProfile(id) {
         });
 }
 
-function logout() {
+function logout2() {
     localStorage.removeItem('token');
     localStorage.removeItem('email');
     $(document).ready(function () {

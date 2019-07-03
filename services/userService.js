@@ -31,7 +31,7 @@ function submitRegister() {
                 } else if (response.status == 500) {
                     msg = "Erro do servidor"
                 } else {
-                    msg = "Erro inesperado"
+                    msg = "Senha não contém 8 dígitos"
                 }
 
                 throw new Error("Não foi possível completar o cadastro: " + msg)

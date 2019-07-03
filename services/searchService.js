@@ -48,8 +48,11 @@ function formatarDisciplinas(listaDisciplinas) {
 function doneTyping() {
     var search = document.getElementById("search")
     if (search != '') {
+        var value = search.value;
+        var encodeValue = encodeURIComponent(value);
+        console.log(encodeValue)
 
-        fetch(('https://api-ucdb.herokuapp.com/api/v1/perfil/disciplina/search?substring=' + search.value), {
+        fetch(('https://api-ucdb.herokuapp.com/api/v1/perfil/disciplina/search?substring=' + '%20'), {
                 method: 'GET',
                 headers: {
                     'Access-Control-Allow-Origin': '*',

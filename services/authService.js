@@ -19,7 +19,7 @@ function submitLogin() {
         })
         .then(function (response) {
             if (!response.ok) {
-                throw new Error("Não foi possível completar o login")
+                throw new Error("Email ou senha incorretos")
             }
             return response.json()
         })
