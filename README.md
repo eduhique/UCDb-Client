@@ -9,6 +9,12 @@ O FrontEnd da aplicação pode ser visto através do link: http://ucdb-client.he
 ## Link para o código do BackEnd
 O código do BackEnd da aplicação pode ser visto através do link: https://github.com/eduhique/Psoft-Backend
 
+## Tecnologias usadas
+Foi usado HTML5, CSS3, e ES6 para fomentação do FrontEnd. Além de bibliotecas externas para importação de fontes, ícones e estilos. Não foram usados frameworks neste projeto.
+
+## Padrão usado
+O padrão de projeto foi o MVVM
+
 ## Funcionalidades:
 
   ### Cadastrar/autenticar usuários:

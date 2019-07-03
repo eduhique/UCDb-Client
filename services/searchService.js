@@ -52,7 +52,7 @@ function doneTyping() {
         var encodeValue = encodeURIComponent(value);
         console.log(encodeValue)
 
-        fetch(('https://api-ucdb.herokuapp.com/api/v1/perfil/disciplina/search?substring=' + '%20'), {
+        fetch(('https://api-ucdb.herokuapp.com/api/v1/perfil/disciplina/search?substring=' + encodeValue), {
                 method: 'GET',
                 headers: {
                     'Access-Control-Allow-Origin': '*',
