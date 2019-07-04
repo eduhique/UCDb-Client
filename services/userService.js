@@ -1,5 +1,6 @@
-/// user register
-
+/**
+ * Realiza a operacao de cadastrar um usuario ao sistema.
+ */
 function submitRegister() {
     var fName = document.getElementById("register-fName").value
     var lname = document.getElementById("register-lName").value
@@ -40,11 +41,9 @@ function submitRegister() {
         })
         .then(function (data) {
             alert("Usuário cadastrado com sucesso")
-            console.log(data)
             window.location.href = "index.html"
         })
         .catch(function (error) {
-            console.log('There has been a problem with your fetch operation: ' + error.message);
             alert(error.message);
         });
 }

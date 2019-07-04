@@ -1,3 +1,6 @@
+/**
+ * Realiza a operacao de atribuir um like pelo usuario a determinada disciplina.
+ */
 function addLike() {
     var idSubject = location.search.split("?");
     var broke = idSubject[1].split("=");

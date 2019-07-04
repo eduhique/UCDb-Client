@@ -1,9 +1,15 @@
+/*
+ * Realiza a operacao de preparar os dados para o envio do comentario ao backend. 
+ */
 function addComment() {
     var inputComment = document.querySelector("#comment");
-    console.log(inputComment.value);
     submitComment(inputComment);
 }
 
+/**
+ * Realiza a operacao de submeter o texto do comentario feito pelo usuario ao backend.
+ * @param {*} inputComment texto do comentario que o usuario submeteu no sistema.
+ */
 function submitComment(inputComment) {
     var id = location.search.split("?");
     var broke = id[1].split("=");
@@ -36,15 +42,21 @@ function submitComment(inputComment) {
             alert(error.message);
         })
 }
-
+/**
+ * Realiza a operacao de preparar os dados para o envio da resposta ao comentario para o backend.
+ * @param {*} id eh o identificador do comentario a qual a resposta pertence.
+ */
 function addAnswer(id) {
     var inputAnswer = document.querySelector("#answer" + id);
     submitAnswer(inputAnswer, id);
 }
 
+/**
+ * Realiza a operacao de submeter o texto da resposta ao comentario feito pelo usuario ao backend.
+ * @param {*} inputAnswer texto da resposta digitado pelo usuario.
+ * @param {*} id identificador do comentario a qual a resposta pertence.
+ */
 function submitAnswer(inputAnswer, id) {
-    console.log(inputAnswer.value);
-    console.log(id);
     var idSubject = location.search.split("?");
     var broke = idSubject[1].split("=");
     var idComment = id;
@@ -78,6 +90,10 @@ function submitAnswer(inputAnswer, id) {
         })
 }
 
+/**
+ * Realiza a operacao de apagar um comentario ou uma resposta feita pelo proprio usuario.
+ * @param {*} id identificador do comentario ou resposta.
+ */
 function removeComment(id) {
     var idSubject = location.search.split("?");
     var broke = idSubject[1].split("=");
@@ -108,6 +124,11 @@ function removeComment(id) {
 
 }
 
+/**
+ * Realiza a operacao de submeter a resposta ao comentario apertando a tecla 'enter' do teclado.
+ * @param {*} e elemento o qual eh apertado pelo teclado.
+ * @param {*} idAnswer identificador do comentario o qual se refere a resposta.
+ */
 function answerEnter(e, idAnswer) {
     if (e.keyCode == 13) {
         addAnswer(idAnswer);
@@ -115,6 +136,10 @@ function answerEnter(e, idAnswer) {
     }
 };
 
+/**
+ * Realiza a operacao de submeter o comentario apertando a tecla 'enter' do teclado.
+ * @param {*} e elemento o qual eh apertado pelo teclado
+ */
 function commentEnter(e) {
     if (e.keyCode == 13) {
         addComment();

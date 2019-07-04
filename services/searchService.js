@@ -1,3 +1,6 @@
+/**
+ * Realiza a operacao de submeter os dados de pesquisa de disciplina do usuario em tempo de execucao
+ */
 function submitSearch() {
     //setup before functions
     var typingTimer; //timer identifier
@@ -17,9 +20,12 @@ function submitSearch() {
 
 }
 
+/**
+ * Realiza a operacao de formatar as disciplinas contidas dentro do JSON.
+ * @param {*} listaDisciplinas JSON contendo as informacoes das disciplinas.
+ */
 function formatarDisciplinas(listaDisciplinas) {
-    console.log(listaDisciplinas);
-    var repos = listaDisciplinas; // JSON Parsing
+    var repos = listaDisciplinas; 
     document.getElementById("disciplinas").innerHTML = "";
     var list = '';
 
@@ -45,12 +51,14 @@ function formatarDisciplinas(listaDisciplinas) {
 
 }
 
+/**
+ * Realiza a operacao de requisicao de disciplinas ao backend.
+ */
 function doneTyping() {
     var search = document.getElementById("search")
     if (search != '') {
         var value = search.value;
         var encodeValue = encodeURIComponent(value);
-        console.log(encodeValue)
 
         fetch(('https://api-ucdb.herokuapp.com/api/v1/perfil/disciplina/search?substring=' + encodeValue), {
                 method: 'GET',
@@ -83,11 +91,17 @@ function doneTyping() {
     }
 }
 
+/**
+ * Realiza a operacao de preparar os dados para ir ao perfil da disciplina solicitada.
+ */
 function perfilDisciplina(idDisciplina) {
-    console.log(idDisciplina)
     formatarPerfil(idDisciplina);
 }
 
+/**
+ * Realiza a operacao de requisicao da pagina com as informacoes da disciplina solicitada.
+ * @param {*} idDisciplina identificador da disciplina que o usuario deseja saber informacoes.
+ */
 function formatarPerfil(idDisciplina) {
     fetch(('https://api-ucdb.herokuapp.com/api/v1/disciplina/' + idDisciplina), {
             method: 'GET',
@@ -103,15 +117,15 @@ function formatarPerfil(idDisciplina) {
             return response.json()
         })
         .then(function (data) {
-            console.log(data)
         })
         .catch(function (error) {
-            console.log('There has been a problem with your fetch operation: ' + error.message);
             alert(error.message);
         });
 }
 
-
+/**
+ * Realiza a operacao de ignorar a tecla 'enter', caso seja pressionada rs.
+ */
 function doNothing() {  
     var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
     if( keyCode == 13 ) {

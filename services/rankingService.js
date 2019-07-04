@@ -1,7 +1,14 @@
+/**
+ * Realiza a operacao de renderizar o ranking assim que inicia-se a pagina.
+ * Por default, o ranking de likes sempre é inicializado ao carregar a pagina.
+ */
 window.onload = function loadRanking() {
     likeRanking();
 }
 
+/**
+ * Realiza a operacao de requisicao do ranking de likes
+ */
 function likeRanking(){
     fetch(('https://api-ucdb.herokuapp.com/api/v1/perfil/ranking/like'), {
             method: 'GET',
@@ -21,11 +28,13 @@ function likeRanking(){
             renderRankingLike(data);
         })
         .catch(function (error) {
-            console.log('There has been a problem with your fetch operation: ' + error.message);
             alert(error.message);
         });
 }
-
+/**
+ * Realiza a operacao de renderizar o ranking de likes.
+ * @param {*} data JSON recebido pelo response.
+ */
 function renderRankingLike(data){
     var title = "Ranking de disciplinas por like";
     var responseLike = data;
@@ -75,6 +84,9 @@ function renderRankingLike(data){
     document.getElementById('rankingId').innerHTML = button + "<div class='ranking-name'>" + title + "</div>" + listLike;
 }
 
+/**
+ * Realiza a operacao de requisicao do ranking de comentarios.
+ */
 function commentRanking(){
     fetch(('https://api-ucdb.herokuapp.com/api/v1/perfil/ranking/comentario'), {
             method: 'GET',
@@ -94,11 +106,14 @@ function commentRanking(){
             renderRankingComment(data);
         })
         .catch(function (error) {
-            console.log('There has been a problem with your fetch operation: ' + error.message);
             alert(error.message);
         });
 }
 
+/**
+ * Realiza a operacao de renderizar o ranking de comentarios.
+ * @param {*} data JSON recebido pelo response.
+ */
 function renderRankingComment(data){
     var title = "Ranking de disciplinas por comentário";
     var responseLike = data;
@@ -141,9 +156,11 @@ function renderRankingComment(data){
     document.getElementById('rankingId').innerHTML = button + "<div class='ranking-name'>" + title + "</div>" + listLike;
 }
 
+/**
+ * Realiza a operacao de adicionar um like a disciplina dentro do ranking de likes.
+ * @param {*} id identificador da disciplina a qual o usuario deseja realizar o like.
+ */
 function addLike(id) {
-    
-
     fetch('https://api-ucdb.herokuapp.com/api/v1/perfil/like/?perfil-id=' + id, {
         method: 'PUT',
         headers: {

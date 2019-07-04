@@ -1,3 +1,6 @@
+/*
+ * Realiza a operacao de submeter os dados do usuario para efetuar o login no backend.
+ */
 function submitLogin() {
     var email = document.getElementById("login-email").value
     var senha = document.getElementById("login-psw").value
@@ -25,7 +28,6 @@ function submitLogin() {
         })
         .then(function (data) {
             alert("Usuário logado com sucesso")
-            console.log(data)
 
             // Store
             localStorage.setItem("token", data.token)
@@ -34,12 +36,13 @@ function submitLogin() {
             window.location.href = "index.html"
         })
         .catch(function (error) {
-            console.log('There has been a problem with your fetch operation: ' + error.message);
             alert(error.message);
         });
 }
 
-/// user logout
+/*
+ * Realiza a operacao de logout do usuario no sistema. 
+ */
 
 function logout() {
     localStorage.removeItem('token');

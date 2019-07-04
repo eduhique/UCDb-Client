@@ -1,3 +1,6 @@
+/**
+ * Realiza a operacao de preparar os parametros para a requisicao da disciplina.
+ */
 window.onload = function subjectDecode() {
     var id = location.search.split("?");
     var broke = id[1].split("=");
@@ -6,9 +9,11 @@ window.onload = function subjectDecode() {
 
 }
 
+/**
+ * Realiza a operacao de requisicao de disciplina junto ao backend.
+ * @param {*} id identificador da disciplina o qual o usuario deseja saber informacoes sobre a disciplina.
+ */
 function subjectProfile(id) {
-    console.log(id);
-    console.log(localStorage.getItem("token"));
     fetch(('https://api-ucdb.herokuapp.com/api/v1/perfil/?perfil-id=' + id), {
         method: 'GET',
         headers: {
@@ -82,26 +87,11 @@ function subjectProfile(id) {
             document.getElementById("subjectbyid").innerHTML = "<div class='subject-name'>" + profile + "</div>" + "</br><div class='card-like'><a class=" + likeStatus + " href='#' onclick='return addLike()'><i class='fas fa-heart'></i></a><span class='number-likes'>" + data.curtidas + "</div></br>" +
                 "<div class='comment-area'><input type='text' class='comment-submit' onkeypress='return commentEnter(event)' placeholder='faça um comentário...' id='comment'><a class='comment-button' href='#' onclick='return addComment()'><i class='fas fa-comment-dots'></i></a></div>" +
                 "<div class='center'>" + listComments + "</div><div></div><div></div><div></div></div>";
-
-            console.log(data)
         })
         .catch(function (error) {
-            console.log('There has been a problem with your fetch operation: ' + error.message);
             alert(error.message);
             logout();
         });
 }
 
-function logout2() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('email');
-    $(document).ready(function () {
-        $('#id01').modal(
-            {
 
-                url: 'subject.html'
-            }
-        );
-        $('#id01').onload();
-    });
-};
